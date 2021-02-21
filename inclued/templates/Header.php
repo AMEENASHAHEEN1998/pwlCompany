@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title><?php getTitle()?></title>
         <link rel="stylesheet" type="text/css" href='<?php echo $css ."bootstrap.min.css"?>'  >
         <link rel="stylesheet" type="text/css" href='<?php echo $css ."bootstrap.css"?>'>
         <link rel="stylesheet" type="text/css" href='<?php echo $css ."jquery-ui.css"?> '>

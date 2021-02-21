@@ -1,5 +1,13 @@
 <?php
-/*
-** get All function v1.0 
-** function to get All filed  from database 
+
+/*  function get title 
+    echo page title for each page 
 */
+function getTitle(){
+    global $pageTitle;
+    if(isset($pageTitle)){
+        echo $pageTitle;
+    }else{
+        echo 'Defult';
+    }
+}
