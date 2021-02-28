@@ -14,4 +14,5 @@
     include $func . 'function.php';
     include "connect.php"; // db connect file 
     include  $tpl . 'Header.php'; // include header file 
+    if(!isset($noNavbar)){include $tpl . 'navbar.php';}
     

@@ -18,6 +18,7 @@
     include  $languages . 'english.php'; // include english language file
     include $func . 'function.php';
     include  $tpl . 'Header.php'; // include header file and navbar
+    if(!isset($noNavbar)){include $tpl . 'navbar.php';}
     
 
     

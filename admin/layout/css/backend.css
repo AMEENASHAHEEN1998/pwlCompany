@@ -1,0 +1,45 @@
+body{
+    text-align: right;
+    direction: rtl;
+}
+
+.home-stats .stat{
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 15px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+.home-stats .stat i{
+    position: absolute;
+    font-size: 80px;
+    left: 30px;
+    top: 35px;
+}
+.home-stats .stat .info{
+    float: right;
+}
+.home-stats .stat a{
+    color: #fff;
+}
+.home-stats .stat a:hover{
+    text-decoration: none;
+}
+.home-stats .stat span{
+    display:block;
+    font-size: 60px;
+
+}
+.home-stats .st-members{
+    background-color: #3489db;
+}
+.home-stats .st-pending{
+    background-color: #c0392b;
+}
+.home-stats .st-items{
+    background-color: #d35400;
+}
+.home-stats .st-comments{
+    background-color: #8d44ad;
+}
