@@ -911,3 +911,24 @@ body
     right: 42px;
 }
 /*End login */
+
+/* start login page*/
+
+.register form{
+    max-width: 380px;
+    margin: auto;
+}
+.register h2{
+    color: #c0c0c0;
+}
+.register form input{
+    margin-bottom: 10px;
+}
+.input-container{
+    position: relative;
+}
+
+
+
+
+/* end login page*/

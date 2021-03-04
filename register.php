@@ -108,20 +108,23 @@
     
 ?>
 <!-- register page html code -->
-<h2 class='text-center '>تسجيل جديد</h2>
-<form class='signup' action="<?php echo $_SERVER['PHP_SELF'] ?>" method ="POST" enctype = 'multipart/form-data' >
-    <label for="username"> اسم المستخدم</label>
-    <input class='form-control' id="username" type="text" name='username' autocomplete ='OFF' pattern = '.{4,}' title='User Name Must Be more than 4 chars' placeholder='أدخل اسم المستخدم' required>
-    <label for="email"> البريد الالكتروني</label>
-    <input class='form-control' id="email" type="email" name='email' autocomplete ='off' minlenght = '5' placeholder='أدخل ايميل صحيح' required>
-    <label for="phone">رقم الجوال</label>
-    <input class='form-control' id="phone" type="number" name='phone' autocomplete ='off' minlenght = '10' placeholder='أدخل رقم الجوال' required>
-    <label for="img"> صورة شخصية</label>
-    <input class='form-control' id ="img" type="file" name='photo'   required>
-    <label for="pass"> كلمة المرور</label>
-    <input class='form-control' id="pass" type="password" name='password' autocomplete ='new-password' minlenght = '5' placeholder='أدخل كلمة مرور قوية' required>
-    <label for="pass_again"> أعد ادخال كلمة المرور </label>
-    <input class='form-control' id="pass_again" type="password" name='password-again' autocomplete ='new-password' placeholder='أعد ادخال كلمة المرور' required>
-    <input class='btn btn-success btn-block'  type="submit" name ='signup' value='تسجيل'>
 
-</form>
+<div class="register" style="max-width: 380px; margin: auto; ">
+    <h2 class='text-center ' style="color: #c0c0c0;">تسجيل جديد</h2>
+    <form class='signup' action="<?php echo $_SERVER['PHP_SELF'] ?>" method ="POST" enctype = 'multipart/form-data' >
+        <label for="username" style="margin: 10px;"> اسم المستخدم</label>
+        <input class='form-control' id="username" type="text" name='username' autocomplete ='OFF' pattern = '.{4,}' title='User Name Must Be more than 4 chars' placeholder='أدخل اسم المستخدم' required>
+        <label for="email" style="margin: 10px;"> البريد الالكتروني</label>
+        <input class='form-control' id="email" type="email" name='email' autocomplete ='off' minlenght = '5' placeholder='أدخل ايميل صحيح' required>
+        <label for="phone" style="margin: 10px;">رقم الجوال</label>
+        <input class='form-control' id="phone" type="number" name='phone' autocomplete ='off' minlenght = '10' placeholder='أدخل رقم الجوال' required>
+        <label for="img" style="margin: 10px;"> صورة شخصية</label>
+        <input class='form-control' id ="img" type="file" name='photo'   required>
+        <label for="pass" style="margin: 10px;"> كلمة المرور</label>
+        <input class='form-control' id="pass" type="password" name='password' autocomplete ='new-password' minlenght = '5' placeholder='أدخل كلمة مرور قوية' required>
+        <label for="pass_again" style="margin: 10px;"> أعد ادخال كلمة المرور </label>
+        <input class='form-control' id="pass_again" type="password" name='password-again' autocomplete ='new-password' placeholder='أعد ادخال كلمة المرور' required>
+        <input class='btn btn-success btn-block' style="margin-top: 10px;"  type="submit" name ='signup' value='تسجيل'>
+
+    </form>
+</div>
