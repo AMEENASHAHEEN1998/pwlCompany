@@ -1,7 +1,7 @@
 <?php
     session_start();
     $noNavbar ='';
-    $pageTitle = 'Register';
+    $pageTitle = 'تسجيل جديد';
     if(isset($_SESSION['user'])){
         header('location:index.php');
     }
@@ -10,50 +10,118 @@
 
     //check if user come from http request
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+        $photoName = $_FILES['photo']['name'];
+        $photoSize = $_FILES['photo']['size'];
+        $photoTmp = $_FILES['photo']['tmp_name'];
+        $photoType = $_FILES['photo']['type'];
+
+        // list of upload file extention allow
+        $photoAllowExtention = array("jpeg","jpg","png","gif");
+
+        // get photo extention
+        $tmp = explode(".",$photoName);
+        $photoExtention = strtolower(end($tmp));
+
         $username = $_POST['username'];
         $password = $_POST['password'];
-        //$hashedPass = sha1($password);
+        $hashedPass = sha1($password);
 
         $email = $_POST['email'];
-        
-        
+        $phone = $_POST['phone'];
 
-        // check if user exist in database
-    
+        // validation for input
 
-        $stmt = $con->prepare("INSERT INTO pwlcompany.users(UserName ,Password , Email , Status, img )
-                        value (:zuser,:zpass,:zemail ,2,'0')");
-                        $stmt->execute(array(
-                            'zuser'     => $username,
-                            'zpass'     => $password,
-                            'zemail'    => $email
-                        ));                         
-        $count = $stmt->rowCount();
-                        echo '<div class= "alert alert-success">'. $stmt->rowCount() . "Recored Insered".'</div>';
-                        
-        // if count > 0 this mean that connect to database correct
-        if($count > 0){
-            $_SESSION['user'] = $username; // register session name 
-            $_SESSION['uid'] = $get['UserId'];// register userid in session
-            header('location:index.php'); // transfer to dashpored page
-            exit();
+        $formErrors = array();
+        if(strlen($username) < 4){
+            $formErrors[] = " اسم المستخدم لا يجب أن يكون أقل من 4 حروف ";
         }
+        if(strlen($username) > 20){
+            $formErrors[] = " اسم المستخدم لا يتجاوز 20 حرف ";
+        }
+        if(empty($username)){
+            $formErrors[] = "اسم المستخدم لا يجب ان يكون فارغ ";
+        }
+        if(empty($password)){
+            $formErrors[] = " كلمة المرور فارغة  ";
+        }
+        if(empty($email)){
+            $formErrors[] = " البريد الالكتروني فارغ ";
+        }
+        if(empty($phone)){
+            $formErrors[] = " رقم الجوال فارغ ";
+        }
+        if(! empty($photoName)&& ! in_array($photoExtention,$photoAllowExtention)){
+            $formErrors[] = " امتداد هذه الصورة غير متاح ";
+            
+        }
+        if( empty($photoName)){
+            $formErrors[] = " الصورة مطلوبة ";
+            
+        }
+        if( $photoSize > 4194304){
+            $formErrors[] = "  4MBلا يجب أن يكون حجم الصورة أكبر من  ";
+            
+        }
+
+        foreach($formErrors as $error){
+            echo "<div class = 'alert alert-danger'>" .$error."</div>" ;
+        }
+
+        // check if is there no error in update process
+        if(empty($formErrors)){
+
+            $photo = rand(0 , 1000000) . '_' . $photoName;
+            move_uploaded_file($photoTmp,'\uploads\photo\\' . $photo);
+
+            $check = checkItem("UserName","pwlcompany.users",$username);
+            if($check == 1){
+                $Msg = "<div class = 'alert alert-danger'>عذرا خذا المستخدم موجود مسبقا</div>";
+                redirectPage($Msg,'back' , 5);
+            }else{
+                // insert into db
+                $stmt = $con->prepare("INSERT INTO pwlcompany.users(UserName ,Password , Email , PhoneNumber , Status  , img)
+                value (:zuser,:zpass,:zemail ,:znumber ,0  , :zphoto)");
+                $stmt->execute(array(
+                    'zuser'     => $username,
+                    'zpass'     => $hashedPass,
+                    'zemail'    => $email,
+                    'znumber'     => $phone,
+                    'zphoto'    => $photo
+                ));
+                $Msg = '<div class= "alert alert-success">'.$stmt->rowCount()  . "تم الاضافة".'</div>';
+                
+            // if count > 0 this mean that connect to database correct
+                if($stmt->rowCount() > 0){
+                    $_SESSION['user'] = $username; // register session name 
+                    $_SESSION['uid'] = $get['UserId'];// register userid in session
+                    header('location:index.php'); // transfer to dashpored page
+                    exit();
+                }
+            }
+        }
+
+
     }
     
     
     
 ?>
 <!-- register page html code -->
-<h2 class='text-center '>SignUp</h2>
-<form class='signup' action="<?php echo $_SERVER['PHP_SELF'] ?>" method ="POST" >
-    <input class='form-control' type="text" name='username' autocomplete ='OFF' pattern = '.{4,}' title='User Name Must Be more than 4 chars' placeholder='Enter Your User Name' required>
-    <input class='form-control' type="email" name='email' autocomplete ='off' minlenght = '5' placeholder='Enter Vailed Email' required>
-    <input class='form-control' type="password" name='password' autocomplete ='new-password' minlenght = '5' placeholder='Enter Complex Password' required>
-    <input class='form-control' type="password" name='password-again' autocomplete ='new-password' placeholder='Enter Password Again' required>
-    <input class='btn btn-success btn-block'  type="submit" name ='signup' value='SignUp'>
+<h2 class='text-center '>تسجيل جديد</h2>
+<form class='signup' action="<?php echo $_SERVER['PHP_SELF'] ?>" method ="POST" enctype = 'multipart/form-data' >
+    <label for="username"> اسم المستخدم</label>
+    <input class='form-control' id="username" type="text" name='username' autocomplete ='OFF' pattern = '.{4,}' title='User Name Must Be more than 4 chars' placeholder='أدخل اسم المستخدم' required>
+    <label for="email"> البريد الالكتروني</label>
+    <input class='form-control' id="email" type="email" name='email' autocomplete ='off' minlenght = '5' placeholder='أدخل ايميل صحيح' required>
+    <label for="phone">رقم الجوال</label>
+    <input class='form-control' id="phone" type="number" name='phone' autocomplete ='off' minlenght = '10' placeholder='أدخل رقم الجوال' required>
+    <label for="img"> صورة شخصية</label>
+    <input class='form-control' id ="img" type="file" name='photo'   required>
+    <label for="pass"> كلمة المرور</label>
+    <input class='form-control' id="pass" type="password" name='password' autocomplete ='new-password' minlenght = '5' placeholder='أدخل كلمة مرور قوية' required>
+    <label for="pass_again"> أعد ادخال كلمة المرور </label>
+    <input class='form-control' id="pass_again" type="password" name='password-again' autocomplete ='new-password' placeholder='أعد ادخال كلمة المرور' required>
+    <input class='btn btn-success btn-block'  type="submit" name ='signup' value='تسجيل'>
 
 </form>
-
-<?php
-    include $tpl . 'Footer.php';
-    ?>

@@ -354,7 +354,8 @@
                 $userid = $_POST['userid'];
                 $email = $_POST['email'];
                 $number = $_POST['number'];
-
+                $status = 1 ;
+                $groupid = 0;
                 // password trick 
 
                 $pass ='';
@@ -417,8 +418,8 @@
                     }else {
                         //echo $username . $userid . $email . $fullname;
 
-                        $stmt = $con->prepare("UPDATE pwlcompany.users SET UserName = ? , Email = ? , PhoneNumber = ? و img = ? ,Password = ?, Status = 1 ,  GroupId = 0 WHERE UserId = ?");
-                        $stmt->execute(array($username ,$email ,$number , $photo ,$pass ,$userid ));
+                        $stmt = $con->prepare("UPDATE pwlcompany.users SET UserName = ? , Email = ? , PhoneNumber = ? , img = ? ,Password = ?, Status = ? , GroupId = ?   WHERE UserId = ?");
+                        $stmt->execute(array($username ,$email ,$number , $photo ,$pass ,$status , $groupid ,$userid ));
                         
 
                         $Msg='<div class= "alert alert-success">'. $stmt->rowCount() . "تم تحديث البيانات".'</div>';

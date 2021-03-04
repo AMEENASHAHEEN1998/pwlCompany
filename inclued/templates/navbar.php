@@ -19,9 +19,9 @@
                       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   
                           <ul class="nav navbar-nav navbar-right">
-                              <li class="active"><a href="index.html">الرئيسية</a></li>
-                              <li><a href="about.html">من نحن</a></li>
-                              <li><a href="team.html">فريق العمل</a></li>
+                              <li class="active"><a href="index.php">الرئيسية</a></li>
+                              <li><a href="about.php">من نحن</a></li>
+                              <li><a href="team.php">فريق العمل</a></li>
                               <li class="dropdown">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                       aria-haspopup="true" aria-expanded="false">خدماتنا <span
@@ -36,7 +36,7 @@
   
                                   </ul>
                               </li>
-                              <li><a href="contact.html">اتصل بنا</a></li>
+                              <li><a href="contact.php">اتصل بنا</a></li>
                           </ul>
                       </div>
                   </div>

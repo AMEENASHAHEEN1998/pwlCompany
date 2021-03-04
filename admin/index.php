@@ -16,7 +16,7 @@
         
 
         // check if user exist in database
-        $stmt = $con->prepare("SELECT UserId, UserName,Password FROM pwlcompany.users WHERE UserName = ? AND Password = ? AND Status = 1  ");// AND GroupId = 1  هاد لو بدي بس الأعضاء الرئيسين هم الي يقدرو يفوتو
+        $stmt = $con->prepare("SELECT UserId, UserName,Password FROM pwlcompany.users WHERE UserName = ? AND Password = ? AND GroupId = 1  ");// AND GroupId = 1  هاد لو بدي بس الأعضاء الرئيسين هم الي يقدرو يفوتو
         $stmt->execute(array($username,$password));
         $row = $stmt->fetch();
         

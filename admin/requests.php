@@ -46,7 +46,7 @@
                                 echo "<tr>";
                                     echo "<td>" . $row['idRequest'] . "</td>";
                                     echo "<td>" . $row['img'] . "</td>";
-                                    echo "<td>" . $row['username'] . "</td>";//
+                                    echo "<td>" . $row['username'] . "</td>";
                                     echo "<td>" . $row['email'] . "</td>";
                                     echo "<td>" . $row['phoneNumber'] . "</td>";
                                     echo "<td>" . $row['specialization'] ."</td>";
