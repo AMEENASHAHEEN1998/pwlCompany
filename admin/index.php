@@ -37,10 +37,10 @@
 ?>
 
 <form class="login" style="max-width: 380px; margin: auto; margin-top: 200px; " action="<?php echo $_SERVER['PHP_SELF'] ?>" method ="POST">
-    <h4 class="text-center" style="margin: 10px;" >User Login</h4>
-    <input class="form-control" style="margin: 10px;" type = "text" name ="user" placeholder = "User Name" autocomplate="off"/>
-    <input class="form-control" style="margin: 10px;" type = "password" name ="password" placeholder = "User Password" autocomplate="new-password"/>
-    <input class="btn btn-primary btn-block" style="margin: 10px;" type = "submit" value = "Login"/>
+    <h4 class="text-center" style="margin: 10px;" >تسجيل دخول</h4>
+    <input class="form-control" style="margin: 10px;" type = "text" name ="user" placeholder = "اسم المستخدم" autocomplate="off"/>
+    <input class="form-control" style="margin: 10px;" type = "password" name ="password" placeholder = "كلمة المرور" autocomplate="new-password"/>
+    <input class="btn btn-primary btn-block" style="margin: 10px;" type = "submit" value = "دخول"/>
     
 </form>
 
