@@ -14,7 +14,7 @@
 
             
       ?>
-    ?>
+    
  
       <section class="team-sec">
           <div class="container">
@@ -25,7 +25,7 @@
                   echo '<div class="row">';
                     echo '<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">';
                       echo '<div class="team-work">';
-                        echo '<span class="title-job">' .$row["Job title"]. '</span>';
+                        echo '<span class="title-job">' .$row["Job"]. '</span>';
                         
                         echo "<div class=' full-view'>";
                           echo "<p>"; 

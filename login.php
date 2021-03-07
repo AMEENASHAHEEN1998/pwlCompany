@@ -52,9 +52,11 @@
             <br><br>
             <input class='btn btn-primary btn-block NN' type="submit"  value='تسجيل دخول'>
             
-
+            <a href="register.php" >تسجيل جديد اضغط هنا</a>
 
         </form>
+
     </div>
+
 
 
