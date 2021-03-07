@@ -3,7 +3,7 @@
 
     session_start();
     include 'init.php'; // include init file
-    echo $_SESSION['uid'];
+    
     ?>
 
     
