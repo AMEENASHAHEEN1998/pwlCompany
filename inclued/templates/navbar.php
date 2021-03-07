@@ -1,4 +1,5 @@
 <!-- start nav section -->
+
 <section class="nav-sec">
       <nav class="navbar navbar-default">
           <div class="container">
@@ -27,16 +28,31 @@
                                       aria-haspopup="true" aria-expanded="false">خدماتنا <span
                                           class="caret"></span></a>
                                   <ul class="dropdown-menu">
-                                      <li><a href="design1.html"> تصميم و تطوير المواقع</a></li>
-                                      <li><a href="design2.html">تصميم و تطوير تطبيقات الموبايل</a></li>
-                                      <li><a href="design3.html">التصميم الجرافيكي</a></li>
-                                      <li><a href="design4.html">التسويق الالكتروني</a></li>
-                                      <li><a href="design5.html"> استضافة مواقع</a></li>
-                                      <li><a href="design6.html">السيرفرات الخاصة </a></li>
+                                  <?php $stmt = $con->prepare("SELECT * from pwlcompany.services  ");
+                                        $stmt->execute();
+                                        $rows = $stmt->fetchAll();
+                                        $count = $stmt->rowCount();
+                                        if(!empty($rows)){
+                                        
+                                    
+                                            foreach($rows as $row){ 
+                                                
+                                                
+                                                echo "<li><a href='service.php?id=".$row['id'] . " '> ". $row['name'] . "</a></li>";
+                                            }
+                                        }?>
+
+
+                                      
+                                      
   
                                   </ul>
                               </li>
                               <li><a href="contact.php">اتصل بنا</a></li>
+                              
+                              
+                              <li><a href='affiliation.php?id=<?php echo $_SESSION['uid']; ?>'>  الانتساب</a></li>
+
                           </ul>
                       </div>
                   </div>

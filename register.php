@@ -25,6 +25,7 @@
 
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $pass_again = $_POST['pass_again'];
         $hashedPass = sha1($password);
 
         $email = $_POST['email'];
@@ -62,6 +63,18 @@
         if( $photoSize > 4194304){
             $formErrors[] = "  4MBلا يجب أن يكون حجم الصورة أكبر من  ";
             
+        }
+        if(isset($_POST['password']) && isset($_POST['pass_again'])){
+            if(empty($_POST['password'])){
+                $formErrors[] = 'Sorry Password Can Not Be Empty';
+            }
+
+            $pass = sha1($_POST['password']);
+            $pass_again = sha1($_POST['pass_again']);
+
+            if($pass !== $pass_again){
+                $formErrors[] = 'Sorry Password Not Match';
+            }
         }
 
         foreach($formErrors as $error){

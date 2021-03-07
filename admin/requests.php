@@ -45,12 +45,19 @@
                             foreach($rows as $row){
                                 echo "<tr>";
                                     echo "<td>" . $row['idRequest'] . "</td>";
-                                    echo "<td>" . $row['img'] . "</td>";
+                                    echo "<td>";
+                                    if(empty($row['img'])){
+                                        echo '<img class ="img-responsive"src= "../layout/image/personal.png" alt =""/>';
+                                    }else{
+                                        echo "<img src='..\uploads/photo/" . $row['img'] . "'alt=''>";
+                                    } 
+                                    echo "</td>";
+
                                     echo "<td>" . $row['username'] . "</td>";
                                     echo "<td>" . $row['email'] . "</td>";
                                     echo "<td>" . $row['phoneNumber'] . "</td>";
                                     echo "<td>" . $row['specialization'] ."</td>";
-                                    echo "<td>" . $row['Job title'] ."</td>";
+                                    echo "<td>" . $row['Job'] ."</td>";
                                     echo "<td>" . $row['CV'] ."</td>";
                                     
 

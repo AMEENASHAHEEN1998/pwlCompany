@@ -23,6 +23,7 @@
             if($count > 0){
                 $_SESSION['user'] = $username; // register session name 
                 $_SESSION['uid'] = $get['UserId'];// register userid in session
+
                 header('location:index.php'); // transfer to dashpored page
                 exit();
             }else{
