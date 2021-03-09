@@ -130,7 +130,7 @@
               <div class="app-caption text-center">
                 <h1>هل تريد طلب مشروع ؟</h1>
                 <p>ماذا تنتظر ؟ اطلب الآن!</p>
-                <a class="btn btn-warning btn-app">اطلب الآن</a>
+                <a class="btn btn-warning btn-app" href="request_project.php">اطلب الآن</a>
               </div>
             </div>
           </div>            
